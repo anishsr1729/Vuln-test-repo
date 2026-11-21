@@ -14,8 +14,8 @@ def get_user_info(username):
     connection = sqlite3.connect("users.db")
     cursor = connection.cursor()
 
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    cursor.execute(query)
+    query = "SELECT * FROM users WHERE username = ?"
+    cursor.execute(query, (username,))
 
     result = cursor.fetchall()
     connection.close()
